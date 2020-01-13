@@ -6,7 +6,24 @@
   <div class="background-image">
   </div>
   <div class="caption">
-    <h1>Scrape</h1>
-    <p>National Public Radio</p>
+    <h1 class="paperId">Scrape</h1>
+    <p class="paperId">National Public Radio</p>
   </div>
 </div>
+<div class="container">
+    {{#each article}}
+  
+    <div class="card">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">  <li>{{this.link}}</li></h5>
+    <p class="card-text">{{this.title}}</p>
+    <a href="/save" class="btn btn-primary">Save Article</a>
+  </div>
+</div>
+  {{/each}}
+</div>
+{{!-- unless article display this bar/message --}}
+{{!-- if article display cards --}}
+
