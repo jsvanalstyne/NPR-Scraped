@@ -3,6 +3,7 @@ var mongojs = require("mongojs");
 var exphbs = require("express-handlebars");
 var app = express();
 var dbArticle = require("./models/Article");
+var dbSaved = require("./models/Saved");
 var mongoose = require("mongoose");
 // Set up a static folder (public) for our web app
 app.use(express.static("public"));
@@ -20,10 +21,15 @@ mongoose.connect("mongodb://localhost/nprdb");
 require("./routes/nprRoutes")(app);
 
 app.get("/", function (req, res) {
-dbArticle.find().then(function(dbArticles){
-    res.render('index', { article: dbArticles });
+    dbArticle.find().then(function (dbArticles) {
+        res.render('index', { article: dbArticles });
+    });
+
 });
-    
+app.get("/saved", function (req, res) {
+    dbSaved.find().then(function (saved) {
+        res.render('index', { savedArticle: saved });
+    });
 });
 
 

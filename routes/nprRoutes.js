@@ -1,6 +1,7 @@
 var axios = require("axios");
 var cheerio = require("cheerio");
 var dbArticle = require("../models/Article");
+var dbSaved = require("../models/Saved");
 module.exports = function(app){
 app.get("/scrape", function(req, res){
 axios.get("https://www.npr.org").then(function(response) {
@@ -12,13 +13,14 @@ axios.get("https://www.npr.org").then(function(response) {
 
     var title = $(element).find("h3").text();
     var link = $(element).find("a").attr("href");
+    var summary = $(element).find("a").text();
     // results.push({
     //   title: title,
     //   link: link
     // });
     console.log(title, link)
 
-    dbArticle.create({title:title,link:link}).catch(function(err){
+    dbArticle.create({title:title,link:link, summary:summary}).catch(function(err){
         console.log(err);
     })
   });
@@ -27,5 +29,9 @@ axios.get("https://www.npr.org").then(function(response) {
   
 });
 res.json("scrape successful");
+});
+
+app.get("/saved", function(req, res){
+
 });
 }

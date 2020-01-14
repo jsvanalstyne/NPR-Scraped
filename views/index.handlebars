@@ -13,16 +13,32 @@
 <div class="container">
     {{#each article}}
   
+    <div class="card pt-3">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
+    <p class="card-text scrapedSummary">{{this.summary}}</p>
+    <p class="card-text scrapedTitle">{{this.title}}</p>
+    <a href="/save" class="btn btn-primary saveArticleButton" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
+  </div>
+</div>
+  {{/each}}
+    {{#each Saved}}
+  
     <div class="card">
   <div class="card-header">
   </div>
   <div class="card-body">
-    <h5 class="card-title">  <li>{{this.link}}</li></h5>
-    <p class="card-text">{{this.title}}</p>
-    <a href="/save" class="btn btn-primary">Save Article</a>
+    <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
+    <p class="card-text scrapedSummary">{{this.summary}}</p>
+    <p class="card-text scrapedTitle">{{this.title}}</p>
+    <a href="/save" class="btn btn-primary saveArticleButton" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
 </div>
   {{/each}}
+
+
 </div>
 {{!-- unless article display this bar/message --}}
 {{!-- if article display cards --}}

@@ -12,6 +12,14 @@ window.location.reload();
 
 
 })
+$(".saveArticleButton").on("click", function(){
+
+$.post("/saved", function(req, res){
+
+
+});
+
+});
 
 
 
