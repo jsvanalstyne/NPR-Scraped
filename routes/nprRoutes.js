@@ -31,7 +31,11 @@ axios.get("https://www.npr.org").then(function(response) {
 res.json("scrape successful");
 });
 
-app.get("/saved", function(req, res){
-
+app.post("/savedArticle", function(req, res){
+console.log(req.body); 
+    dbSaved.create({title:req.body.title,link:req.body.link, summary:req.body.summary}).catch(function(err){ console.log(err);
+    })
+res.json(200);
 });
+
 }

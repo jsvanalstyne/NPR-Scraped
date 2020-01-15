@@ -13,7 +13,7 @@ link: {
 },
 summary:{
     type: String,
-    required: true
+    required: false
 }
 });
 

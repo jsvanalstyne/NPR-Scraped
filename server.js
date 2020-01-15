@@ -5,8 +5,11 @@ var app = express();
 var dbArticle = require("./models/Article");
 var dbSaved = require("./models/Saved");
 var mongoose = require("mongoose");
+var bodyParser = require("body-parser")
+
 // Set up a static folder (public) for our web app
 app.use(express.static("public"));
+app.use(bodyParser.json());
 var databaseUrl = "nprdb";
 var collections = ["npr"];
 
@@ -17,7 +20,7 @@ app.set("view engine", "handlebars");
 // db.on("error", function (error) {
 //     console.log("Database Error:", error);
 // });
-mongoose.connect("mongodb://localhost/nprdb");
+mongoose.connect("mongodb://localhost/nprdb", { useNewUrlParser: true })
 require("./routes/nprRoutes")(app);
 
 app.get("/", function (req, res) {
@@ -26,7 +29,7 @@ app.get("/", function (req, res) {
     });
 
 });
-app.get("/saved", function (req, res) {
+app.get("/savedArticle", function (req, res) {
     dbSaved.find().then(function (saved) {
         res.render('index', { savedArticle: saved });
     });
