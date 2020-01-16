@@ -2,6 +2,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var dbArticle = require("../models/Article");
 var dbSaved = require("../models/Saved");
+var ObjectId = require('mongodb').ObjectID;
 module.exports = function(app){
 app.get("/scrape", function(req, res){
 axios.get("https://www.npr.org").then(function(response) {
@@ -42,8 +43,16 @@ res.json(200);
 });
 
 app.delete("/savedArticle", function(req, res){
-  dbSaved.deleteOne({title:req.body.title,link:req.body.link, summary:req.body.summary}).catch(function(err){ console.log(err);
+  console.log(req.body.id);
+  dbSaved.deleteOne({_id: ObjectId(req.body.id)}).catch(function(err){ console.log(err);
   });
+  res.json(200);
 });
-
+app.delete("/articles", function(req, res){
+  dbArticle.deleteMany({}).catch(function(err){ console.log(err);
+  });
+  dbSaved.deleteMany({}).catch(function(err){ console.log(err);
+  });
+  res.json(200);
+})
 }

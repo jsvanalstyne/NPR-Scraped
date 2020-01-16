@@ -5,7 +5,8 @@ var app = express();
 var dbArticle = require("./models/Article");
 var dbSaved = require("./models/Saved");
 var mongoose = require("mongoose");
-var bodyParser = require("body-parser")
+var bodyParser = require("body-parser");
+
 
 // Set up a static folder (public) for our web app
 app.use(express.static("public"));
