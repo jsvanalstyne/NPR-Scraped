@@ -20,7 +20,7 @@
     <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
     <p class="card-text scrapedSummary">{{this.summary}}</p>
     <p class="card-text scrapedTitle">{{this.title}}</p>
-    <a href="/savedArticle" class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
+    <a class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
 </div>
   {{/each}}
@@ -33,7 +33,8 @@
     <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
     <p class="card-text scrapedSummary">{{this.summary}}</p>
     <p class="card-text scrapedTitle">{{this.title}}</p>
-    <a href="/save" class="btn btn-primary " data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
+    <a class="btn btn-primary deleteSaved" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Delete Article</a>
+    <a class="btn btn-primary " data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Article Notes</a>
   </div>
 </div>
   {{/each}}

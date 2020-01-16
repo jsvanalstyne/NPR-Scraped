@@ -31,10 +31,14 @@ app.get("/", function (req, res) {
 });
 app.get("/savedArticle", function (req, res) {
     dbSaved.find().then(function (saved) {
-        res.render('index', { savedArticle: saved });
+        res.render('index', { Saved: saved });
     });
 });
-
+// app.post("/savedArticle", function (req, res) {
+//     dbArticle.find().then(function (dbArticle) {
+//         res.render('index', { article: dbArticle });
+//     });
+// })
 
 app.listen(3000, function () {
     console.log("App running on port 3000!");

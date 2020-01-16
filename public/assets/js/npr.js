@@ -26,6 +26,8 @@ $(".saveArticleButton").on("click", function(){
 postingSavedArticle(articleObject);
 
 });
+
+
 function postingSavedArticle(articleSaving){
 
 // $.post("/savedArticle", articleSaving).then(function (data) {
@@ -47,4 +49,34 @@ $.ajax({
     res.send(err);
   });;
 }
+
+$(".deleteSaved").on("click", function(){
+
+  var savedObject={
+    title: $(this).attr("data-title"),
+    summary: $(this).attr("data-summary"),
+    link: $(this).attr("data-link")
+}
+console.log(savedObject)
+deleteSavedArticle(savedObject);
+});
+
+function deleteSavedArticle(objectToDelete){
+  console.log(objectToDelete);
+  $.ajax({
+    url: "/savedArticle",
+    data: JSON.stringify(objectToDelete),
+    type: "DELETE",
+    dataType: "json",
+    contentType: "application/json"
+}).then(function (data) {
+  console.log(data)
+  window.location.reload();
+}).fail(function (err) {
+if (err) throw err;
+console.log(err);
+res.send(err);
+});;
+}
+
 });
