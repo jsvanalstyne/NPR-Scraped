@@ -90,5 +90,12 @@ $(".clearArticles").on("click", function(){
     window.location.reload();
   })
 });
+
+$(".addNote").on("click", function(){
+ $("#articleNotesModal").modal("show");
 });
+
+});
+
+
 // });
