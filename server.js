@@ -7,9 +7,9 @@ var dbSaved = require("./models/Saved");
 var dbNote = require("./models/Note");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-// mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 
 
 // Set up a static folder (public) for our web app
