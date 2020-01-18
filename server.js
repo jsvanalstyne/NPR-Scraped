@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 // db.on("error", function (error) {
 //     console.log("Database Error:", error);
 // });
-mongoose.connect("mongodb://localhost/nprdb", { useNewUrlParser: true })
+// mongoose.connect("mongodb://localhost/nprdb", { useNewUrlParser: true })
 require("./routes/nprRoutes")(app);
 
 app.get("/", function (req, res) {
