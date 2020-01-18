@@ -43,15 +43,19 @@ console.log(req.body);
 res.json(200);
 });
 app.get("/savedArticleNotes/:id", function(req, res){
-dbSaved.findOne({_id: ObjectId(req.params.id)}).then(function(data){
-  res.render("index", {Notes: data})
+dbSaved.findOne({_id: ObjectId(req.params.id)}).catch(function(err){ console.log(err);
 });
-// res.json(200);
+// .then(function(data){
+//   res.render("index", {Notes: data})
+// });
+res.json(200);
 });
 app.post("/savedArticles/:id", function (req, res) {
+  console.log("npre routes line 54 "+req.body);
   dbNote.create(req.body).then(function (articleNotePost) {
     return dbSaved.findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $push: { note: articleNotePost._id } }, { new: true });
   })
+  res.json(200)
 });
 
 app.delete("/savedArticle", function(req, res){

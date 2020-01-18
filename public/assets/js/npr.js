@@ -102,13 +102,14 @@ $.ajax({
 }).then(function(data){
   console.log(data);
   $(".noteId").text(noteLinkId);
+  
 });
  
 
 });
 
 $(".postNewNote").on("click", function(){
-  var postBody = $(".noteBody").text()
+  var postBody = $("#noteBody").val()
   console.log(noteLinkId);
 var newNote = {
   body: postBody
@@ -116,12 +117,15 @@ var newNote = {
 createNewPost(newNote)
 });
 function createNewPost(savedNote){
+  console.log(savedNote);
   $.ajax({
     url: "/savedArticles/"+ noteLinkId,
     data: savedNote,
     type: "POST"    
   }).then(function(data){
-    console(data);
+    console.log("npr.js line 125" +data);
+    // res.render("index", {Notes: data})
+    $(".noteBody").empty();
     window.location.reload();
   })
 }
