@@ -115,9 +115,10 @@ var newNote = {
   body: postBody
 }
 createNewPost(newNote)
+$("#noteBody").empty();
 });
 function createNewPost(savedNote){
-  console.log(savedNote);
+  console.log(JSON.stringify(savedNote));
   $.ajax({
     url: "/savedArticles/"+ noteLinkId,
     data: savedNote,
@@ -125,8 +126,8 @@ function createNewPost(savedNote){
   }).then(function(data){
     console.log("npr.js line 125" +data);
     // res.render("index", {Notes: data})
-    $(".noteBody").empty();
-    window.location.reload();
+    $("#noteBody").val("");
+    // window.location.reload();
   })
 }
 });
