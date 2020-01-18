@@ -42,10 +42,17 @@ console.log(req.body);
     });
 res.json(200);
 });
-// app.post("/savedArticles/:id", function (req, res) {
-//   dbNote.create(req.body).then(function (articleNotePost) {
-//     return dbSaved.findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $push: { note: articleNotePost._id } }, { new: true });
-//   })
+app.get("/savedArticleNotes/:id", function(req, res){
+dbSaved.findOne({_id: ObjectId(req.params.id)}).then(function(data){
+  res.render("index", {Notes: data})
+});
+// res.json(200);
+});
+app.post("/savedArticles/:id", function (req, res) {
+  dbNote.create(req.body).then(function (articleNotePost) {
+    return dbSaved.findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $push: { note: articleNotePost._id } }, { new: true });
+  })
+});
 
 app.delete("/savedArticle", function(req, res){
   console.log(req.body.id);

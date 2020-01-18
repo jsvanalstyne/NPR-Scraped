@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  var noteLinkId="";
 
 $(".scrape-articles").on("click", function(){
 
@@ -93,13 +93,38 @@ $(".clearArticles").on("click", function(){
 
 $(".addNote").on("click", function(){
  $("#articleNotesModal").modal("show");
-var noteLinkId = $(this).attr("data-id")
+noteLinkId = $(this).attr("data-id")
 console.log(noteLinkId);
-$.get("/savedArticleNotes", function(data){
-console.log(data);
-})
+
+$.ajax({
+  url:"/savedArticleNotes/" + noteLinkId,
+  type: "GET"
+}).then(function(data){
+  console.log(data);
+  $(".noteId").text(noteLinkId);
+});
+ 
+
 });
 
+$(".postNewNote").on("click", function(){
+  var postBody = $(".noteBody").text()
+  console.log(noteLinkId);
+var newNote = {
+  body: postBody
+}
+createNewPost(newNote)
+});
+function createNewPost(savedNote){
+  $.ajax({
+    url: "/savedArticles/"+ noteLinkId,
+    data: savedNote,
+    type: "POST"    
+  }).then(function(data){
+    console(data);
+    window.location.reload();
+  })
+}
 });
 
 
