@@ -7,6 +7,7 @@ var dbSaved = require("./models/Saved");
 var dbNote = require("./models/Note");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var PORT = process.env.PORT || 3000;
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI);
@@ -44,6 +45,6 @@ app.get("/savedArticle", function (req, res) {
 //     });
 // })
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
     console.log("App running on port 3000!");
 });
