@@ -31,10 +31,6 @@ postingSavedArticle(articleObject);
 
 function postingSavedArticle(articleSaving){
 
-// $.post("/savedArticle", articleSaving).then(function (data) {
-//     console.log("saved");
-//     window.location.reload();
-// });
 $.ajax({
     url: "/savedArticle",
     data: JSON.stringify(articleSaving),
@@ -121,8 +117,10 @@ function createNewPost(savedNote){
   console.log(JSON.stringify(savedNote));
   $.ajax({
     url: "/savedArticles/"+ noteLinkId,
-    data: savedNote,
-    type: "POST"    
+    data: JSON.stringify(savedNote),
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json"    
   }).then(function(data){
     console.log("npr.js line 125" +data);
     // res.render("index", {Notes: data})

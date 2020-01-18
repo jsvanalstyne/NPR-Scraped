@@ -16,17 +16,11 @@ module.exports = function (app) {
         var title = $(element).find("h3").text();
         var link = $(element).find("a").attr("href");
         var summary = $(element).find("a").text();
-        // results.push({
-        //   title: title,
-        //   link: link
-        // });
-        console.log(title, link)
 
         dbArticle.create({ title: title, link: link, summary: summary }).catch(function (err) {
           console.log(err);
         })
       });
-      console.log(results);
 
 
     });
@@ -35,7 +29,6 @@ module.exports = function (app) {
 
 
   app.post("/savedArticle", function (req, res) {
-    console.log(req.body);
     dbSaved.create({ title: req.body.title, link: req.body.link, summary: req.body.summary }).catch(function (err) {
       console.log(err);
     });
@@ -57,7 +50,7 @@ module.exports = function (app) {
     });
     app.post("/savedArticles/:id", function (req, res) {
       console.log("npre routes line 59 " + (req.body));
-      dbNote.create({body:req.body.body}).then(function (articleNotePost) {
+      dbNote.create(req.body).then(function (articleNotePost) {
         console.log(articleNotePost);
         return dbSaved.findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $push: { note: articleNotePost._id} }, { new: true });
       })
