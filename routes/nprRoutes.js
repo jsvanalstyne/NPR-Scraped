@@ -3,6 +3,7 @@ var cheerio = require("cheerio");
 var dbArticle = require("../models/Article");
 var dbSaved = require("../models/Saved");
 var ObjectId = require('mongodb').ObjectID;
+var dbNote = require("../models/Note");
 module.exports = function(app){
 app.get("/scrape", function(req, res){
 axios.get("https://www.npr.org").then(function(response) {
@@ -41,6 +42,10 @@ console.log(req.body);
     });
 res.json(200);
 });
+// app.post("/savedArticles/:id", function (req, res) {
+//   dbNote.create(req.body).then(function (articleNotePost) {
+//     return dbSaved.findOneAndUpdate({ _id: ObjectId(req.params.id) }, { $push: { note: articleNotePost._id } }, { new: true });
+//   })
 
 app.delete("/savedArticle", function(req, res){
   console.log(req.body.id);

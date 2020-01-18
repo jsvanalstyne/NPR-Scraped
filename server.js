@@ -4,15 +4,18 @@ var exphbs = require("express-handlebars");
 var app = express();
 var dbArticle = require("./models/Article");
 var dbSaved = require("./models/Saved");
+var dbNote = require("./models/Note");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// mongoose.connect(MONGODB_URI);
 
 
 // Set up a static folder (public) for our web app
 app.use(express.static("public"));
 app.use(bodyParser.json());
-var databaseUrl = "nprdb";
-var collections = ["npr"];
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");

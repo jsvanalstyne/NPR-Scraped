@@ -84,7 +84,7 @@ res.send(err);
 $(".clearArticles").on("click", function(){
   
   $.ajax({
-    url: "articles",
+    url: "/articles",
     type: 'DELETE',
   }).then(function(data){
     window.location.reload();
@@ -93,6 +93,11 @@ $(".clearArticles").on("click", function(){
 
 $(".addNote").on("click", function(){
  $("#articleNotesModal").modal("show");
+var noteLinkId = $(this).attr("data-id")
+console.log(noteLinkId);
+$.get("/savedArticleNotes", function(data){
+console.log(data);
+})
 });
 
 });
