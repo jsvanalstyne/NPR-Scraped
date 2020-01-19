@@ -15,10 +15,10 @@ summary:{
     type: String,
     required: false
 },
-note:{
+note:[{
     type: Schema.Types.ObjectId,
     ref: "Note"
-}
+}]
 });
 
 var Saved = mongoose.model("Saved", savedSchema);

@@ -91,19 +91,47 @@ $(".addNote").on("click", function(){
  $("#articleNotesModal").modal("show");
 noteLinkId = $(this).attr("data-id")
 console.log(noteLinkId);
+getSavedNotes(noteLinkId);
 
-$.ajax({
-  url:"/savedArticleNotes/" + noteLinkId,
-  type: "GET"
-}).then(function(data){
-  console.log(data);
-  $(".noteId").text(noteLinkId);
-  
-});
  
 
 });
+function getSavedNotes(getSavedNote){
+  console.log("inside getSavedNotes")
+  console.log(getSavedNote)
+  $.ajax({
+    url:"/savedArticleNotes/"+ getSavedNote,
+    type: "GET"
+  }).then(function(data){
+    console.log(data);
+    $(".noteId").text(noteLinkId);
+    // console.log ("line 108 " +data);
+    var noteArray = data.note;
+    for(var i=0; i<noteArray.length; i++){
+      console.log(noteArray[i].body);
 
+
+
+
+      var cards = $("<div>").addClass("card p-3 m-3").attr("style", "width: 18rem;").append(
+        
+        $("<div>").addClass("card-text pt-3").text(noteArray[i].body),
+        $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote").text("Delete Note")
+        
+      );
+
+    $(".prevPostedNotes").append(cards);
+
+
+
+
+
+
+    }
+    
+  });
+
+}
 $(".postNewNote").on("click", function(){
   var postBody = $("#noteBody").val()
   console.log(noteLinkId);
@@ -123,9 +151,9 @@ function createNewPost(savedNote){
     contentType: "application/json"    
   }).then(function(data){
     console.log("npr.js line 125" +data);
-    // res.render("index", {Notes: data})
+   
     $("#noteBody").val("");
-    // window.location.reload();
+    getSavedNotes(noteLinkId);
   })
 }
 });

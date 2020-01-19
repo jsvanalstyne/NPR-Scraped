@@ -38,10 +38,13 @@ module.exports = function (app) {
     res.json(200);
   });
   app.get("/savedArticleNotes/:id", function (req, res) {
-    dbSaved.findOne({ _id: ObjectId(req.params.id) }).populate("note")
+    console.log(req.params.id);
+    dbSaved.findOne({ _id: ObjectId(req.params.id) })
+    .populate("note")
       .then(function (dbArticle) {
-
+        console.log("inside .then")
         res.json(dbArticle);
+        
       })
       .catch(function (err) {
 
