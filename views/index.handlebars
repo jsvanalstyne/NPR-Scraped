@@ -17,9 +17,10 @@
   <div class="card-header">
   </div>
   <div class="card-body">
-    <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
+     <h5 class="card-text scrapedTitle">{{this.title}}</h5>
+    <p class="card-title scrapedLink">{{this.link}}<p>
     <p class="card-text scrapedSummary">{{this.summary}}</p>
-    <p class="card-text scrapedTitle">{{this.title}}</p>
+   
     <a class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
 </div>
@@ -30,9 +31,10 @@
   <div class="card-header">
   </div>
   <div class="card-body">
-    <h5 class="card-title scrapedLink">  <li>{{this.link}}</li></h5>
+     <h5 class="card-text scrapedTitle">{{this.title}}</h5>
+    <p class="card-title scrapedLink">{{this.link}}<p>
     <p class="card-text scrapedSummary">{{this.summary}}</p>
-    <p class="card-text scrapedTitle">{{this.title}}</p>
+    
     <a class="btn btn-primary deleteSaved" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Delete Article</a>
     <a class="btn btn-primary addNote" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}"data-target="#articleNotesModal">Article Notes</a>
   </div>

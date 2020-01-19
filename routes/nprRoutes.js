@@ -15,7 +15,7 @@ module.exports = function (app) {
 
         var title = $(element).find("h3").text();
         var link = $(element).find("a").attr("href");
-        var summary = $(element).find("a").text();
+        var summary = $(element).find("img").attr("src");
 
         dbArticle.create({ title: title, link: link, summary: summary }).catch(function (err) {
           console.log(err);
@@ -78,5 +78,11 @@ module.exports = function (app) {
         console.log(err);
       });
       res.json(200);
-    })
+    });
+    app.delete("/notes/:id", function(req, res){
+      dbNote.deleteOne({ _id: ObjectId(req.params.id) }).catch(function (err) {
+        console.log(err);
+      });
+      res.json(200);
+    });
   }
