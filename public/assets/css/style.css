@@ -29,7 +29,18 @@
 }
 .card{
     margin-bottom: 20px;
+    height: 400px;
+}
+.card-header{
+    height: 50px;
+    text-align: center;
 }
 .scrapedSummary{
     width: 200px;
+}
+.saveArticleButton{
+    margin: 5px;
+}
+.scrapedSummary, .scrapedLink, .saveArticleButton{
+    justify-content: center;
 }
