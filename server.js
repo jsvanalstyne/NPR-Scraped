@@ -22,7 +22,8 @@ app.get("/", function (req, res) {
 // GET route for dispalying all saved articles in the saved collection using handlebars. 
 app.get("/savedArticle", function (req, res) {
     dbSaved.find().then(function (saved) {
-        res.render('index', { Saved: saved });
+        console.log("line 25 " +saved);
+        res.render('index', { Saved: saved, savedView: true });
     });
 });
 app.listen(PORT, function () {

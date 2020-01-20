@@ -14,9 +14,11 @@ module.exports = function (app) {
         var link = $(element).find("a").attr("href");
         var summary = $(element).find("img").attr("src");
         var headerArticle = $(element).find("h2").text()
+        if(title && link && summary && headerArticle){
         dbArticle.create({ title: title, link: link, summary: summary, headerArticle: headerArticle }).catch(function (err) {
           console.log(err);
         })
+      }
       });
     });
     res.json("scrape successful");

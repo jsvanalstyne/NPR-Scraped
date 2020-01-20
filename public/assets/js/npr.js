@@ -93,12 +93,15 @@ $(document).ready(function () {
       $(".noteId").text(noteLinkId);
       // console.log ("line 108 " +data);
       var noteArray = data.note;
+      $(".prevPostedNotes").empty();
+      var cards = [];
       for (var i = 0; i < noteArray.length; i++) {
         console.log(noteArray[i].body);
-        var cards = $("<div>").addClass("card").append(
+        var card = $("<div>").addClass("card").append(
           $("<div>").addClass("card-text").text(noteArray[i].body),
           $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote btn btn-primary").text("Delete Note")
         );
+        cards.push(card);
       }
       $(".prevPostedNotes").append(cards);
     });
