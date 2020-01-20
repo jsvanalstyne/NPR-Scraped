@@ -9,10 +9,12 @@
   </div>
 </div>
 <div class="container">
+  <div class= "row">
   {{#if article}}
     {{#each article}}
-  <div class= "row">
-    <div class="card p-3 m-3" style="width: 18rem;">
+  
+    <div class= "col-4">
+    <div class="card pt-3 m-3" style="width: 18rem;">
   <div class="card-header">
     <h4>{{this.headerArticle}}</h4>
   </div>
@@ -24,9 +26,11 @@
    
     <a class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
+  </div>
 </div>
-</div>
+
   {{/each}}
+  </div>
   {{else if Saved}}
     {{#each Saved}}
   
