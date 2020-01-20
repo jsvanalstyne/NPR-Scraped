@@ -13,7 +13,8 @@ module.exports = function (app) {
         var title = $(element).find("h3").text();
         var link = $(element).find("a").attr("href");
         var summary = $(element).find("img").attr("src");
-        dbArticle.create({ title: title, link: link, summary: summary }).catch(function (err) {
+        var headerArticle = $(element).find("h2").text()
+        dbArticle.create({ title: title, link: link, summary: summary, headerArticle: headerArticle }).catch(function (err) {
           console.log(err);
         })
       });

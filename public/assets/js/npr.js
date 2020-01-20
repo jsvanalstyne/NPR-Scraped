@@ -97,7 +97,7 @@ $(document).ready(function () {
         console.log(noteArray[i].body);
         var cards = $("<div>").addClass("card").append(
           $("<div>").addClass("card-text").text(noteArray[i].body),
-          $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote").text("Delete Note")
+          $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote btn btn-primary").text("Delete Note")
         );
       }
       $(".prevPostedNotes").append(cards);

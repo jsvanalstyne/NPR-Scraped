@@ -13,7 +13,10 @@ link: {
 },
 summary:{
     type: String,
-    required: true
+    required: false
+},
+headerArticle: {
+    type: String
 }
 });
 

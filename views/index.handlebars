@@ -11,17 +11,20 @@
 <div class="container">
   {{#if article}}
     {{#each article}}
-  
-    <div class="card pt-3">
+  <div class= "row">
+    <div class="card p-3 m-3" style="width: 18rem;">
   <div class="card-header">
+    <h4>{{this.headerArticle}}</h4>
   </div>
   <div class="card-body">
-     <h5 class="card-text scrapedTitle">{{this.title}}</h5>
-    <p class="card-title scrapedLink">{{this.link}}<p>
-    <p class="card-text scrapedSummary">{{this.summary}}</p>
+     
+     <h5 class="card-title scrapedLink"><a href="{{this.link}}">{{this.title}}</a></h5>
+    
+    <img src="{{this.summary}}" class="card-img-top scrapedSummary" alt="...">
    
     <a class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
+</div>
 </div>
   {{/each}}
   {{else if Saved}}
@@ -31,9 +34,9 @@
   <div class="card-header">
   </div>
   <div class="card-body">
-     <h5 class="card-text scrapedTitle">{{this.title}}</h5>
-    <p class="card-title scrapedLink">{{this.link}}<p>
-    <p class="card-text scrapedSummary">{{this.summary}}</p>
+     <h5 class="card-title scrapedLink"><a href="{{this.link}}">{{this.title}}</a></h5>
+    
+    <img src="{{this.summary}}" class="card-img-top scrapedSummary" alt="...">
     
     <a class="btn btn-primary deleteSaved" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Delete Article</a>
     <a class="btn btn-primary addNote" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}"data-target="#articleNotesModal">Article Notes</a>
@@ -42,7 +45,7 @@
   {{/each}}
   {{/if}}
 
-  {{!-- {{/if}} --}}
+  
   
 
 
