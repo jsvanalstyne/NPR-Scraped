@@ -14,6 +14,7 @@
     {{#each article}}
   
     <div class= "col-4">
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded">
     <div class="card pt-3 m-3" style="width: 18rem;">
   <div class="card-header">
     <h4>{{this.headerArticle}}</h4>
@@ -22,32 +23,37 @@
      
      <h5 class="card-title scrapedLink"><a href="{{this.link}}">{{this.title}}</a></h5>
     
-    <img src="{{this.summary}}" class="card-img-top scrapedSummary" alt="...">
+    <img src="{{this.summary}}" class="card-img-top scrapedSummary img-thumbnail" alt="...">
    
     <a class="btn btn-primary saveArticleButton" data-summary= "{{this.summary}}" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}">Save Article</a>
   </div>
   </div>
 </div>
+</div>
 
   {{/each}}
   </div>
+  <div class= "row">
   {{else if Saved}}
     {{#each Saved}}
-  
-    <div class="card">
-  <div class="card-header">
-  </div>
+    <div class= "col-4">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="card pt-3 m-3" style="width: 18rem;">
   <div class="card-body">
      <h5 class="card-title scrapedLink"><a href="{{this.link}}">{{this.title}}</a></h5>
     
-    <img src="{{this.summary}}" class="card-img-top scrapedSummary" alt="...">
+    <img src="{{this.summary}}" class="card-img-top scrapedSummary img-thumbnail" alt="...">
     
-    <a class="btn btn-primary deleteSaved" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Delete Article</a>
-    <a class="btn btn-primary addNote" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}"data-target="#articleNotesModal">Article Notes</a>
+    <a class="btn btn-primary deleteSaved float-left" data-id= "{{this.id}}"data-title="{{this.title}}" data-link="{{this.link}}">Delete Article</a>
+    <a class="btn btn-primary addNote float-right" data-id= "{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}"data-target="#articleNotesModal">Article Notes</a>
+  </div>
   </div>
 </div>
+</div>
+
   {{/each}}
   {{/if}}
+  </div>
 
   
   

@@ -98,8 +98,8 @@ $(document).ready(function () {
       for (var i = 0; i < noteArray.length; i++) {
         console.log(noteArray[i].body);
         var card = $("<div>").addClass("card").append(
-          $("<div>").addClass("card-text").text(noteArray[i].body),
-          $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote btn btn-primary").text("Delete Note")
+          $("<div>").addClass("card-text notePostedBody overflow-auto").text(noteArray[i].body),
+          $("<button>").attr("data-id", noteArray[i]._id).addClass("deleteNote btn btn-primary float-right").text("Delete Note")
         );
         cards.push(card);
       }
